@@ -49,7 +49,7 @@ func getJSON() (json string, err error) {
 	}
 
 	values := url.Values{}
-	values.Add("Query", "'三森すずこ'")
+	values.Add("Query", "'渡辺優衣'")
 	values.Add("$format", "json")
 	req, err := http.NewRequest("GET", URL, nil)
 	if err != nil {
@@ -117,7 +117,7 @@ func main() {
 
 	timeStamp := time.Now().Format("20060102150405")
 
-	dirName := "mimorin-" + timeStamp
+	dirName := "yuiton-" + timeStamp
 	if err := os.Mkdir(dirName, 0777); err != nil {
 		panic(err)
 	}
@@ -128,7 +128,7 @@ func main() {
 
 	statusChan := make(chan string)
 	for idx, url := range urls {
-		filePath := dirName + "/" + "mimorin" + strconv.Itoa(idx) + "." + url[1]
+		filePath := dirName + "/" + "yuiton" + strconv.Itoa(idx) + "." + url[1]
 		go func(url, filePath string) {
 			saveImageFile(url, filePath)
 			statusChan <- ("Downloading... " + filePath)
